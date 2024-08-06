@@ -1,0 +1,188 @@
+#include <stdio.h>
+#include <math.h> 
+
+
+void plus(float);
+void minus(float);
+void multiplication(float);
+void devide(float);
+void sqroot(float);
+void power(float);
+
+int main (void)  
+
+char type ;
+float no1 ;
+
+printf("\nEnter No 1 : ");
+scanf("%f",&no1);
+
+printf("\n\"+ for addition , - for subtraction , * for multiplication, / for division, S for square root , P for Power\"\n");
+printf("\nEnter Math Function: ");
+scanf(" %c",&type);
+
+   switch (type) 
+  {
+    case '+':
+    plus(no1);
+    break;
+
+    case '-':
+    minus(no1);
+    break;
+
+    case '*':
+    multiplication(no1);
+    break;
+
+    case '/':
+    devide(no1);
+    break;
+
+    case 'S':
+    sqroot(no1);
+    break;
+
+    case 'P':
+    power(no1);
+    break;
+
+    default:
+    printf("\nWrong input Try Again\n");
+    break;
+  }
+
+ return 0;     
+} 
+
+void plus(float n1) 
+{
+   float n2;
+   FILE*fptr;  
+   fptr = fopen("calHistory.txt" , "a"); 
+   printf("\nEnter No 2 : ");
+   scanf("%f",&n2);
+   printf("\n%.2f + %.2f Equal To %.3f\n\n",n1,n2,n1+n2);
+   fprintf(fptr , "\n%.2f + %.2f Equal To %.3f\n\n",n1,n2,n1+n2); 
+   fclose(fptr); 
+}
+
+void minus(float n1)  
+{
+   float n2;
+   FILE*fptr;  
+   fptr = fopen("calHistory.txt" , "a"); 
+   printf("\nEnter No 2 : ");
+   scanf("%f",&n2);
+   printf("\n%.2f - %.2f Equal To %.3f\n\n",n1,n2,n1-n2);
+   fprintf(fptr , "\n%.2f - %.2f Equal To %.3f\n\n",n1,n2,n1-n2);
+   fclose(fptr); //Close File
+}
+
+void multiplication(float n1) 
+{
+   float n2;
+   FILE*fptr;  
+   fptr = fopen("calHistory.txt" , "a)
+   printf("\nEnter No 2 : ");
+   scanf("%f",&n2);
+   printf("\n%.2f * %.2f Equal To %.3f\n\n",n1,n2,n1*n2);
+   fprintf(fptr , "\n%.2f * %.2f Equal To %.3f\n\n",n1,n2,n1*n2); 
+   fclose(fptr); 
+}
+
+void devide(float n1) 
+{
+   float n2;
+   printf("\nEnter No 2 : ");
+   scanf("%f",&n2);
+
+   if (n2==0)
+   {
+      printf("\nCan,t devide by 0\n\n");
+   }
+   else
+   {
+      FILE*fptr;  
+      fptr = fopen("calHistory.txt" , "a"); 
+      printf("\n%.2f / %.2f Equal To %.2f\n\n",n1,n2,n1/n2);
+      fprintf(fptr , "\n%.2f / %.2f Equal To %.2f\n\n",n1,n2,n1/n2); 
+      fclose(fptr);
+   }
+}
+
+void sqroot(float n1)  
+{
+   FILE*fptr;  
+   fptr = fopen("calHistory.txt" , "a");
+   printf("\nSquart root of %.2f is = %.3f\n\n", n1, sqrt(n1) );
+   fprintf(fptr , "\nSquart root of %.2f is = %.3f\n\n", n1, sqrt(n1)); 
+   fclose(fptr); 
+
+void power(float n1)  
+{
+   float n2;
+   FILE*fptr;  
+   fptr = fopen("calHistory.txt" , "a");
+   printf("\nEnter Power : ");
+   scanf("%f",&n2);
+   printf("\n%.2f To the Power of %.2f = %.3f\n\n",n1,n2, pow(n1, n2) );
+   fprintf(fptr , "\n%.2f To the Power of %.2f = %.3f\n\n",n1,n2, pow(n1, n2)); 
+   fclose(fptr); 
+}
+
+
+DOCUMENTATION
+Header Files
+
+#include <stdio.h>: Provides functions for input and output operations.
+#include <math.h>: Provides mathematical functions such as sqrt() and pow().
+Function Declarations
+
+void plus(float n1): Performs addition.
+void minus(float n1): Performs subtraction.
+void multiplication(float n1): Performs multiplication.
+void devide(float n1): Performs division.
+void sqroot(float n1): Computes the square root.
+void power(float n1): Computes the power.
+Main Function (main)
+
+Prompts the user for an initial number and a mathematical operation.
+Based on the operation, it calls the appropriate function.
+Mathematical Operations Functions
+
+Each function performs a specific operation, prints the result to the console, and appends the result to a file.
+Input:
+A floating-point number (no1).
+A character (type) representing the chosen mathematical operation.
+Output: Calls one of the mathematical operation functions based on the user's input.
+Function Definitions
+Addition Function (plus)
+Purpose: Computes the sum of n1 and n2, prints the result, and logs it to calHistory.txt.
+Inputs:
+n1 (first number).
+n2 (second number).
+Outputs: Result of addition displayed and appended to calHistory.txt.
+Subtraction Function (minus)
+Purpose: Computes the difference between n1 and n2, prints the result, and logs it to calHistory.txt.
+Inputs:
+n1 (minuend).
+n2 (subtrahend).
+Outputs: Result of subtraction displayed and appended to calHistory.txt.
+Purpose: Computes the product of n1 and n2, prints the result, and logs it to calHistory.txt.
+Inputs:
+n1 (multiplicand).
+n2 (multiplier).
+Outputs: Result of multiplication displayed and appended to calHistory.txt.
+Division Function (divide)
+Computes the quotient of n1 divided by n2, provided n2 is not zero. Prints the result and logs it to calHistory.txt.
+Inputs:
+n1 (dividend).
+n2 (divisor).
+Outputs: Result of division displayed and appended to calHistory.txt.
+Square Root Function (sqroot)
+Computes n1 raised to the power of n2, prints the result, and logs it to calHistory.txt.
+Inputs:
+n1 (base).
+n2 (exponent).
+Outputs: Result of exponentiation displayed and appended to calHistory.txt.
